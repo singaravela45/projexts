@@ -9,6 +9,7 @@ let player1_wins = 0;
 let player2_wins = 0;
 let tie = 0;
 const results = document.querySelector(".results");
+let isactive = true;
 
 const check_array = Array(9).fill(false);
 const player1_array = Array(9).fill(false);
@@ -23,9 +24,9 @@ const checkTie = (array) => {
   tiescore.textContent = tie;
   results.textContent="It is a draw !!"
   results.style.opacity = "1";
-
   setTimeout(() => {
     resetboard();
+    isactive = true;
     results.style.opacity = "0";
   }, 1000);
 };
@@ -47,6 +48,7 @@ const checkwin = (array) => {
 };
 boxes.forEach((box) => {
   box.addEventListener("click", () => {
+    if (!isactive) return;
     const idx = parseInt(box.dataset.index, 10);
     if (check_array[idx]) {
       console.log("error");
@@ -64,8 +66,10 @@ boxes.forEach((box) => {
         player1score.textContent = player1_wins;
         results.textContent = "player 1 wins !";
         results.style.opacity = "1";
+        isactive = false;
         setTimeout(() => {
           resetboard();
+          isactive = true;
           results.style.opacity = "0";
         }, 1000);
         return;
@@ -78,12 +82,14 @@ boxes.forEach((box) => {
       player2_score.classList.add("turnfinder");
       player2_array[idx] = true;
       if (checkwin(player2_array)) {
+        isactive = false;
         player2_wins++;
         player2score.textContent = player2_wins;
         results.textContent = "player 2 wins !";
         results.style.opacity = "1";
         setTimeout(() => {
           resetboard();
+          isactive = true;
           results.style.opacity = "0";
         }, 1000);
         return;
@@ -106,4 +112,5 @@ const resetboard = () => {
 
 resetbtn.addEventListener("click", () => {
   resetboard();
+
 });
