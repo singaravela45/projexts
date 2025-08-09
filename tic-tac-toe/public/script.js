@@ -8,6 +8,7 @@ const player2_score = document.querySelector(".player2_score");
 let player1_wins = 0;
 let player2_wins = 0;
 let tie = 0;
+const results = document.querySelector(".results");
 
 const check_array = Array(9).fill(false);
 const player1_array = Array(9).fill(false);
@@ -20,8 +21,12 @@ const checkTie = (array) => {
   }
   tie++;
   tiescore.textContent = tie;
+  results.textContent="It is a draw !!"
+  results.style.opacity = "1";
+
   setTimeout(() => {
     resetboard();
+    results.style.opacity = "0";
   }, 1000);
 };
 // check wins
@@ -57,8 +62,11 @@ boxes.forEach((box) => {
       if (checkwin(player1_array)) {
         player1_wins++;
         player1score.textContent = player1_wins;
+        results.textContent = "player 1 wins !";
+        results.style.opacity = "1";
         setTimeout(() => {
           resetboard();
+          results.style.opacity = "0";
         }, 1000);
         return;
       }
@@ -72,8 +80,11 @@ boxes.forEach((box) => {
       if (checkwin(player2_array)) {
         player2_wins++;
         player2score.textContent = player2_wins;
+        results.textContent = "player 2 wins !";
+        results.style.opacity = "1";
         setTimeout(() => {
           resetboard();
+          results.style.opacity = "0";
         }, 1000);
         return;
       }
