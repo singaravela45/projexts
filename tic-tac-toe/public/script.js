@@ -13,7 +13,7 @@ const results = document.querySelector(".results");
 const check_array = Array(9).fill(false);
 const player1_array = Array(9).fill(false);
 const player2_array = Array(9).fill(false);
-let checkPlayer1 = true;
+let checkPlayer1turn = true;
 //check tie
 const checkTie = (array) => {
   for (var i = 0; i < 9; i++) {
@@ -53,8 +53,8 @@ boxes.forEach((box) => {
       return;
     }
     check_array[idx] = true;
-    if (checkPlayer1) {
-      checkPlayer1 = false;
+    if (checkPlayer1turn) {
+      checkPlayer1turn = false;
       box.innerHTML = "<p>X</p>";
       player1_score.classList.add("turnfinder");
       player2_score.classList.remove("turnfinder");
@@ -72,7 +72,7 @@ boxes.forEach((box) => {
       }
       checkTie(check_array);
     } else {
-      checkPlayer1 = true;
+      checkPlayer1turn = true;
       box.innerHTML = "<p>O</p>";
       player1_score.classList.remove("turnfinder");
       player2_score.classList.add("turnfinder");
@@ -98,7 +98,7 @@ const resetboard = () => {
     player1_array.fill(false);
     player2_array.fill(false);
     check_array.fill(false);
-    checkPlayer1 = true;
+    checkPlayer1turn = true;
     player1_score.classList.remove("turnfinder");
     player2_score.classList.add("turnfinder");
   });
