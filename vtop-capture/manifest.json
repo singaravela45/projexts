@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "ViBoot",
+  "version": "2.1.15",
+  "description": "Saves VTOP login credentials to extension storage upon manual login.",
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://vtop.vit.ac.in/vtop/login"],
+      "js": ["script.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
