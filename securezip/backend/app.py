@@ -5,8 +5,8 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-UPLOAD_FOLDER = "uploads"
-OUTPUT_FOLDER = "outputs"
+UPLOAD_FOLDER = os.path.join("backend", "uploads")
+OUTPUT_FOLDER = os.path.join("backend", "output")
 
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
@@ -14,7 +14,7 @@ os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 @app.route("/upload", methods=["POST"])
 def upload_file():
     file = request.files.get("file")
-    compression = request.form.get("compression", "medium")
+    compression = request.form.get("compression", "Recommended Compression")
     if not file:
         return jsonify({"error": "No file uploaded"}), 400
     filepath = os.path.join(UPLOAD_FOLDER, file.filename)

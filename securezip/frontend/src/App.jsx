@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./styles.css";
 export default function App() {
   const [file, setFile] = useState(null);
-  const [compression, setCompression] = useState("medium");
+  const [compression, setCompression] = useState("Recommended Compression");
   const [loading, setLoading] = useState(false);
   const [downloadUrl, setDownloadUrl] = useState("");
   const handleFileChange = (e) => {
