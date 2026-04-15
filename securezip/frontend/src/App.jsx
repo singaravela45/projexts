@@ -31,7 +31,6 @@ export default function App() {
     }
     setLoading(false);
   };
-
   return (
     <div className="container">
       <h1>Secure File Compressor</h1>
@@ -82,7 +81,6 @@ export default function App() {
             </a>
           </div>
         )}
-
       </div>
     </div>
   );
