@@ -39,7 +39,7 @@ The goal of this project is to combine **algorithmic problem-solving** with a **
 4. Run the application:
 
    ```bash
-   python main.py
+   python sudoku_solver.py
    ```
 
 ---
